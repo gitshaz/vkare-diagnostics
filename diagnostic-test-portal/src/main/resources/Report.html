@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lab Test Report</title>
+    <style>
+        /* Styles for table and header */
+        table {
+          width: 100%;
+          border-collapse: collapse;
+        }
+
+        th, td {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+
+        th {
+          background-color: #f2f2f2;
+        }
+
+        /* Styles for header */
+        .header {
+          text-align: center;
+          margin-bottom: 20px;
+        }
+
+        .header img {
+          max-width: 100px;
+        }
+
+        .patient-details {
+          text-align: right;
+          float: right;
+        }
+
+        .report-details {
+          text-align: left;
+          float: left;
+        }
+    </style>
+</head>
+<body>
+<!-- Header -->
+<div class="header">
+    <img src="https://static.wixstatic.com/media/50d2e4_bb8c8b51224747a7b963881288cd1c66~mv2_d_3300_2550_s_4_2.png/v1/fill/w_176,h_135,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/Vkare%20Logo.png" alt="Lab Logo">
+    <h2>VKare Diagnostics Test Report</h2>
+    <p>Lab Address: 401, IndusValley Complex, Chandanagar, Hyderabad - 500084. Ph: +919898019926</p>
+    <div class="patient-details">
+        <div class="patient-details">
+            <p>Patient Details:</p>
+            <p>Name: {{Patient}}</p>
+            <p>Age: {{Age}}</p>
+            <p>Gender: {{Gender}}</p>
+        </div>
+    </div>
+</div>
+
+<!-- Report Date and Report ID -->
+<div class="report-details">
+    <p>Report Brief:</p>
+    <p>Report Date: {{Report-Date}}</p>
+    <p>Report ID: {{ReportId}}</p>
+    <p>Status: {{Status}}</p>
+</div>
+
+<!-- Table for lab test results -->
+<table>
+    <thead>
+    <tr>
+        <th>Test Name</th>
+        <th>Min Result Value</th>
+        <th>Max Result Value</th>
+        <th>Recommended Result Value</th>
+        <th>Actual Result Value</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Test result data -->
+    {{TRTH_TESTRESULTS}}
+    <!-- Add more rows for other test results -->
+    </tbody>
+</table>
+<hr/>
+<div>
+    Test Cost: {{TEST_COST}} Rs.
+</div>
+<hr/>
+
+<!-- Footer -->
+<div class="footer">
+    <p>Doctor Names: {{Doctor1}}, {{Doctor2}}</p>
+    <p>Doctor's Remarks: {{DoctorRemarks}}</p>
+</div>
+</body>
+</html>

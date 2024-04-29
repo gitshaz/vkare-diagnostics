@@ -52,7 +52,6 @@ public class MainLayout extends AppLayout {
         switch (securityService.getUserRole()) {
             case ROLE_ADMIN -> {
                 VerticalLayout verticalLayout = new VerticalLayout();
-                verticalLayout.getStyle().set( "background", "light aqua blue") ;
                 verticalLayout.add(new RouterLink("Test Packages", TestPackageListView.class));
                 verticalLayout.add(new RouterLink("Diagnostic Tests", DiagnosticTestListView.class));
                 verticalLayout.add(new RouterLink("Doctors", DoctorListView.class));

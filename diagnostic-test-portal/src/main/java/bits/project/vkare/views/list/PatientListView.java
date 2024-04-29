@@ -13,9 +13,10 @@ import com.vaadin.flow.data.value.ValueChangeMode;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.spring.annotation.SpringComponent;
-import jakarta.annotation.security.PermitAll;
 import jakarta.annotation.security.RolesAllowed;
 import org.springframework.context.annotation.Scope;
+
+import java.util.List;
 
 @SpringComponent
 @Scope("prototype")
@@ -50,7 +51,7 @@ public class PatientListView extends VerticalLayout {
     }
 
     private void configureForm() {
-        form = new NewPatientForm(service.findAllPatients(null), service.findAllStatuses());
+        form = new NewPatientForm(service.findAllPatients(null), service.findAllStatuses(), List.of("M", "F"));
         form.setWidth("25em");
         form.addSaveListener(this::saveContact); // <1>
         form.addDeleteListener(this::deleteContact); // <2>

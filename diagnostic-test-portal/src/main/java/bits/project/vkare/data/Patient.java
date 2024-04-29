@@ -10,6 +10,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
+
 @Entity
 @Getter
 @Setter
@@ -30,6 +32,12 @@ public class Patient extends AbstractEntity {
     @Email
     @NotEmpty
     private String email = "";
+
+    @NotEmpty
+    private String gender;
+
+    @NotNull
+    private LocalDate dob;
 
     @Override
     public String toString() {

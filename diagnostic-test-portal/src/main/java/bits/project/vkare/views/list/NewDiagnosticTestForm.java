@@ -30,6 +30,7 @@ public class NewDiagnosticTestForm extends FormLayout {
 
     Checkbox forMale = new Checkbox("For Male");
     Checkbox forFemale = new Checkbox("For Female");
+    BigDecimalField testCost = new BigDecimalField("Test Cost");
 
     Button save = new Button("Save");
     Button delete = new Button("Delete");
@@ -50,6 +51,7 @@ public class NewDiagnosticTestForm extends FormLayout {
                 preferredValueFemale,
                 forMale,
                 forFemale,
+                testCost,
                 createButtonsLayout());
     }
 

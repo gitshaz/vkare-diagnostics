@@ -48,6 +48,16 @@ public class SendMailService {
         }
     }
 
+    @Async
+    public void sendTestReportMail(byte[] reportHtmlBytes, String mailTo) {
+        try {
+            sendMail("VKare Diagnostics: Lab-Report", mailTo, new String(reportHtmlBytes));
+        }
+        catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     private void sendMail(String subject, String mailTo, String htmlBody) throws IOException {
         if (StringUtils.isNotBlank(mailTo)) {
             Email from = new Email(apiSenderEmail);

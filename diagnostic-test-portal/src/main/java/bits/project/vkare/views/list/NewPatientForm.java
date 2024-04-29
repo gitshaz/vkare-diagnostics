@@ -9,6 +9,7 @@ import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.combobox.ComboBox;
+import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.TextField;
@@ -22,6 +23,11 @@ public class NewPatientForm extends FormLayout {
   TextField firstName = new TextField("First Name");
   TextField lastName = new TextField("Last Name");
   TextField email = new TextField("Email");
+
+  ComboBox<String> gender = new ComboBox<String>("Gender");
+
+  DatePicker dob = new DatePicker("BirthDate");
+
   ComboBox<Status> status = new ComboBox<>("Status");
 
   Button save = new Button("Save");
@@ -30,17 +36,21 @@ public class NewPatientForm extends FormLayout {
   // Other fields omitted
   Binder<Patient> binder = new BeanValidationBinder<>(Patient.class);
 
-  public NewPatientForm(List<Patient> patients, List<Status> statuses) {
+  public NewPatientForm(List<Patient> patients, List<Status> statuses, List<String> genders) {
     addClassName("new-patient-form");
     binder.bindInstanceFields(this);
 
     status.setItems(statuses);
     status.setItemLabelGenerator(Status::getName);
 
+    gender.setItems(genders);
+
     add(firstName,
             lastName,
             email,
             status,
+        gender,
+        dob,
         createButtonsLayout());
   }
 

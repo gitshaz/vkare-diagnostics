@@ -42,6 +42,9 @@ public class NewTestOrderForm extends FormLayout {
     Button save = new Button("Save");
     Button delete = new Button("Delete");
     Button close = new Button("Cancel");
+
+    Button report = new Button("Report");
+
     // Other fields omitted
     Binder<TestOrderSummary> binder = new BeanValidationBinder<>(TestOrderSummary.class);
 
@@ -89,9 +92,10 @@ public class NewTestOrderForm extends FormLayout {
         save.addClickListener(event -> validateAndSave());
         delete.addClickListener(event -> fireEvent(new DeleteEvent(this, binder.getBean())));
         close.addClickListener(event -> fireEvent(new CloseEvent(this)));
+        report.addClickListener(event -> fireEvent(new ReportEvent(this, binder.getBean())));
 
         binder.addStatusChangeListener(e -> save.setEnabled(binder.isValid()));
-        return new HorizontalLayout(save, delete, close);
+        return new HorizontalLayout(save, delete, close, report);
     }
 
     private void validateAndSave() {
@@ -157,6 +161,13 @@ public class NewTestOrderForm extends FormLayout {
 
     }
 
+    public static class ReportEvent extends TestOrderFormEvent {
+        ReportEvent(NewTestOrderForm source, TestOrderSummary testOrderSummary) {
+            super(source, testOrderSummary);
+        }
+
+    }
+
     public static class CloseEvent extends TestOrderFormEvent {
         CloseEvent(NewTestOrderForm source) {
             super(source, null);
@@ -172,6 +183,10 @@ public class NewTestOrderForm extends FormLayout {
     }
     public Registration addCloseListener(ComponentEventListener<CloseEvent> listener) {
         return addListener(CloseEvent.class, listener);
+    }
+
+    public Registration addReportListener(ComponentEventListener<ReportEvent> listener) {
+        return addListener(ReportEvent.class, listener);
     }
 
 

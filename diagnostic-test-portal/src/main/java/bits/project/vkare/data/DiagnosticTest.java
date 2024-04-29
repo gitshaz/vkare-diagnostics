@@ -43,4 +43,7 @@ public class DiagnosticTest extends AbstractEntity {
     @NotNull
     private Boolean forFemale;
 
+    @NotNull
+    private BigDecimal testCost;
+
 }
